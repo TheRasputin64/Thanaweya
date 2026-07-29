@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>نتيجة الثانوية العامة 2026 بالإسم</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #F3F5F7;
+    --panel: #FFFFFF;
+    --panel-alt: #F7F9FA;
+    --ink: #23303D;
+    --ink-soft: #64707B;
+    --ink-faint: #9AA5AD;
+    --line: #E2E7EA;
+    --line-strong: #C9D2D8;
+    --blue: #2E7CAD;
+    --blue-ink: #FFFFFF;
+    --purple: #5B3F86;
+    --purple-ink: #FFFFFF;
+    --green: #2E8B57;
+    --green-ink: #FFFFFF;
+    --mint-bg: #DCF3E7;   --mint-ink: #1C6B45;
+    --coral-bg: #FBDDE1;  --coral-ink: #96293C;
+    --amber-bg: #FCEBC4;  --amber-ink: #8A5B00;
+    --sky-bg:   #D6EAF8;  --sky-ink:   #1B5A82;
+    --lilac-bg: #E7DEF3;  --lilac-ink: #4A3580;
+    --grey-bg:  #E9ECEE;  --grey-ink:  #5C6670;
+    --accent: #2E7CAD;
+    --accent-ink: #FFFFFF;
+    --accent-soft: #E7F1F8;
+    --mono: 'JetBrains Mono', 'Courier New', monospace;
+    --sans-ar: 'Cairo', 'Noto Kufi Arabic', 'Segoe UI', Tahoma, 'Arial', 'Geeza Pro', 'Noto Sans Arabic', sans-serif;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--ink);
+    font-family: var(--sans-ar);
+    font-size: 15px;
+    line-height: 1.5;
+  }
+  header.topbar {
+    background: var(--panel);
+    color: var(--ink);
+    padding: 18px 28px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    flex-wrap: wrap;
+    border-bottom: 1px solid var(--line);
+  }
+  header.topbar h1 {
+    margin: 0;
+    font-size: 20px;
+    font-weight: 800;
+    color: var(--ink);
+  }
+  header.topbar .meta {
+    font-family: var(--mono);
+    font-size: 12px;
+    color: var(--ink-faint);
+    direction: ltr;
+    text-align: left;
+  }
+  main {
+    max-width: 1180px;
+    margin: 0 auto;
+    padding: 24px 20px 60px;
+  }
+  section.stats {
+    background: var(--panel);
+    border: 1px solid var(--line);
+    padding: 22px 24px;
+    margin-bottom: 20px;
+    box-shadow: 0 1px 2px rgba(35,48,61,0.04);
+  }
+  .stats-head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 18px;
+  }
+  .stats-head h2 {
+    margin: 0;
+    font-size: 14px;
+    letter-spacing: 0.02em;
+    color: var(--ink-soft);
+    font-weight: 800;
+  }
+  .stat-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+    gap: 12px;
+    margin-bottom: 22px;
+  }
+  .stat-cell {
+    padding: 14px 16px;
+    background: var(--panel-alt);
+    border: 1px solid var(--line);
+  }
+  .stat-cell .label {
+    font-size: 11px;
+    color: var(--ink-soft);
+    letter-spacing: 0.03em;
+    margin-bottom: 6px;
+  }
+  .stat-cell .value {
+    font-family: var(--mono);
+    font-size: 24px;
+    font-weight: 700;
+    color: var(--blue);
+    direction: ltr;
+    text-align: right;
+    unicode-bidi: plaintext;
+  }
+  .stat-cell .value.small { font-size: 15px; color: var(--ink-soft); }
+  .distribution {
+    border-top: 1px solid var(--line);
+    padding-top: 18px;
+  }
+  .distribution .dist-label {
+    font-size: 11px;
+    color: var(--ink-soft);
+    letter-spacing: 0.03em;
+    margin-bottom: 10px;
+  }
+  .dist-bar {
+    display: flex;
+    height: 28px;
+    overflow: hidden;
+    border: 1px solid var(--line);
+  }
+  .dist-segment {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--mono);
+    font-size: 11px;
+    font-weight: 700;
+    color: var(--ink);
+    white-space: nowrap;
+    overflow: hidden;
+    min-width: 2px;
+    border-inline-end: 2px solid var(--panel);
+  }
+  .dist-segment:last-child { border-inline-end: none; }
+  .dist-legend {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+    margin-top: 12px;
+    font-size: 12.5px;
+  }
+  .dist-legend .item {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    color: var(--ink-soft);
+  }
+  .dist-legend .swatch {
+    width: 12px;
+    height: 12px;
+    flex-shrink: 0;
+    border: 1px solid var(--line-strong);
+  }
+  section.search-panel {
+    background: var(--panel);
+    border: 1px solid var(--line);
+    padding: 16px 22px;
+    margin-bottom: 18px;
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+    align-items: center;
+    box-shadow: 0 1px 2px rgba(35,48,61,0.04);
+  }
+  .field-select {
+    display: flex;
+    gap: 6px;
+  }
+  .field-select button {
+    border: 1px solid var(--line);
+    background: var(--panel-alt);
+    padding: 9px 16px;
+    font-family: var(--sans-ar);
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--ink-soft);
+    cursor: pointer;
+    transition: background 0.12s, color 0.12s;
+  }
+  .field-select button.active {
+    background: var(--blue);
+    border-color: var(--blue);
+    color: var(--blue-ink);
+  }
+  .field-select button:not(.active):hover {
+    background: var(--accent-soft);
+    color: var(--blue);
+  }
+  .search-input-wrap {
+    position: relative;
+    flex: 1;
+    min-width: 240px;
+  }
+  input#searchBox {
+    width: 100%;
+    padding: 12px 14px;
+    border: 1px solid var(--line);
+    font-family: var(--sans-ar);
+    font-size: 15px;
+    background: var(--panel-alt);
+    color: var(--ink);
+  }
+  input#searchBox:focus {
+    outline: none;
+    border-color: var(--blue);
+    background: #fff;
+  }
+  input#searchBox::placeholder { color: var(--ink-faint); }
+  .search-hint {
+    font-size: 11.5px;
+    color: var(--ink-faint);
+    margin-top: 6px;
+    width: 100%;
+  }
+  .result-count {
+    font-family: var(--mono);
+    font-size: 12.5px;
+    font-weight: 700;
+    color: var(--blue);
+    white-space: nowrap;
+  }
+  section.table-panel {
+    background: var(--panel);
+    border: 1px solid var(--line);
+    overflow: hidden;
+    box-shadow: 0 1px 2px rgba(35,48,61,0.04);
+  }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  thead th {
+    background: var(--blue);
+    color: var(--blue-ink);
+    text-align: right;
+    padding: 13px 16px;
+    font-size: 12.5px;
+    letter-spacing: 0.02em;
+    font-weight: 800;
+    position: sticky;
+    top: 0;
+  }
+  tbody td {
+    padding: 11px 16px;
+    border-bottom: 1px solid var(--line);
+    font-size: 14.5px;
+  }
+  tbody tr:nth-child(even) { background: var(--panel-alt); }
+  tbody tr:hover { background: var(--accent-soft); }
+  td.seating-no, td.degree {
+    font-family: var(--mono);
+    direction: ltr;
+    text-align: right;
+    unicode-bidi: plaintext;
+  }
+  td.case-desc .pill {
+    display: inline-block;
+    padding: 4px 12px;
+    font-size: 12.5px;
+    font-weight: 700;
+    border: 1px solid transparent;
+  }
+  .pill.pass    { background: var(--mint-bg);  color: var(--mint-ink); }
+  .pill.fail    { background: var(--coral-bg); color: var(--coral-ink); }
+  .pill.second  { background: var(--amber-bg); color: var(--amber-ink); }
+  .pill.transfer{ background: var(--sky-bg);   color: var(--sky-ink); }
+  .pill.other   { background: var(--lilac-bg); color: var(--lilac-ink); }
+  .pill.neutral { background: var(--grey-bg);  color: var(--grey-ink); }
+  .empty-state, .loading-state {
+    padding: 60px 20px;
+    text-align: center;
+    color: var(--ink-soft);
+  }
+  .empty-state .big { font-size: 15px; margin-bottom: 6px; font-weight: 700; }
+  .empty-state .small { font-size: 12.5px; color: var(--ink-faint); }
+  .pagination {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 14px 20px;
+    border-top: 1px solid var(--line);
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+  .pagination .info {
+    font-family: var(--mono);
+    font-size: 12.5px;
+    color: var(--ink-soft);
+    direction: ltr;
+  }
+  .pagination .controls {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+  }
+  .pagination button {
+    border: 1px solid var(--line);
+    background: var(--panel);
+    color: var(--ink);
+    padding: 7px 16px;
+    font-family: var(--sans-ar);
+    font-weight: 600;
+    font-size: 13px;
+    cursor: pointer;
+  }
+  .pagination button:disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
+  }
+  .pagination button:not(:disabled):hover {
+    border-color: var(--blue);
+    background: var(--accent-soft);
+    color: var(--blue);
+  }
+  .pagination select {
+    border: 1px solid var(--line);
+    background: var(--panel);
+    padding: 7px 10px;
+    font-family: var(--mono);
+    font-size: 12.5px;
+    color: var(--ink);
+  }
+  @media (max-width: 640px) {
+    header.topbar { padding: 14px 16px; }
+    header.topbar h1 { font-size: 18px; }
+    main { padding: 16px 12px 40px; }
+    thead th, tbody td { padding: 9px 10px; font-size: 13px; }
+    .stat-grid { grid-template-columns: repeat(2, 1fr); }
+    .field-select { width: 100%; }
+    .field-select button { flex: 1; }
+  }
+  @media (max-width: 420px) {
+    .stat-grid { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+<header class="topbar">
+  <h1>نتيجة الثانوية العامة 2026 بالإسم</h1>
+  <div class="meta" id="loadMeta">…</div>
+</header>
+<main>
+  <section class="stats" id="statsSection">
+    <div class="stats-head">
+      <h2>إحصائيات عامة</h2>
+    </div>
+    <div class="stat-grid" id="statGrid">
+      <div class="stat-cell"><div class="label">إجمالي الطلاب</div><div class="value small">جارٍ التحميل…</div></div>
+    </div>
+    <div class="distribution" id="distributionBlock" style="display:none">
+      <div class="dist-label">توزيع حالات الطلاب</div>
+      <div class="dist-bar" id="distBar"></div>
+      <div class="dist-legend" id="distLegend"></div>
+    </div>
+  </section>
+  <section class="search-panel">
+    <div class="field-select" id="fieldSelect">
+      <button data-field="arabic_name" class="active">الاسم</button>
+      <button data-field="seating_no">رقم الجلوس</button>
+      <button data-field="student_case_desc">الحالة</button>
+    </div>
+    <div class="search-input-wrap">
+      <input type="text" id="searchBox" placeholder="اكتب بداية النص للبحث…" autocomplete="off">
+    </div>
+    <div class="result-count" id="resultCount"></div>
+    <div class="search-hint">يبحث فقط عن النتائج التي تبدأ بما تكتبه (وليس في أي مكان من النص)</div>
+  </section>
+  <section class="table-panel">
+    <table>
+      <thead>
+        <tr>
+          <th>رقم الجلوس</th>
+          <th>الاسم</th>
+          <th>المجموع</th>
+          <th>النسبة</th>
+          <th>الحالة</th>
+        </tr>
+      </thead>
+      <tbody id="tableBody">
+        <tr><td colspan="5" class="loading-state">جارٍ تحميل البيانات…</td></tr>
+      </tbody>
+    </table>
+    <div class="pagination">
+      <div class="info" id="pageInfo">—</div>
+      <div class="controls">
+        <select id="pageSizeSelect">
+          <option value="25">25 / صفحة</option>
+          <option value="50" selected>50 / صفحة</option>
+          <option value="100">100 / صفحة</option>
+          <option value="200">200 / صفحة</option>
+        </select>
+        <button id="prevBtn">السابق</button>
+        <button id="nextBtn">التالي</button>
+      </div>
+    </div>
+  </section>
+</main>
+<footer style="text-align:center;padding:20px;font-size:13px;color:var(--ink-faint)">Made with love by <a href="https://github.com/TheRasputin64/Thanaweya" style="color:var(--blue);text-decoration:none" target="_blank" rel="noopener">TheRasputin64</a></footer>
+<script>(function () { 'use strict'; const state = { field: 'arabic_name', query: '', page: 1, pageSize: 50, totalPages: 1, total: 0, debounceTimer: null, requestSeq: 0, }; const els = { statGrid: document.getElementById('statGrid'), distributionBlock: document.getElementById('distributionBlock'), distBar: document.getElementById('distBar'), distLegend: document.getElementById('distLegend'), loadMeta: document.getElementById('loadMeta'), fieldSelect: document.getElementById('fieldSelect'), searchBox: document.getElementById('searchBox'), resultCount: document.getElementById('resultCount'), tableBody: document.getElementById('tableBody'), pageInfo: document.getElementById('pageInfo'), pageSizeSelect: document.getElementById('pageSizeSelect'), prevBtn: document.getElementById('prevBtn'), nextBtn: document.getElementById('nextBtn'), }; const CASE_COLORS = ['#DCF3E7', '#FBDDE1', '#FCEBC4', '#D6EAF8', '#E7DEF3', '#E9ECEE']; function passFailClass(caseDesc) { const s = (caseDesc || '').toString(); if (s.includes('ناجح') || s.toLowerCase() === 'pass') return 'pass'; if (s.includes('راسب') || s.toLowerCase() === 'fail') return 'fail'; if (s.includes('دور ثاني') || s.includes('دور ثان')) return 'second'; if (s.includes('منقول') || s.toLowerCase() === 'transfer') return 'transfer'; if (s.includes('محروم')) return 'other'; if (s === '') return 'neutral'; return 'neutral'; } function fmtNumber(n) { if (n === null || n === undefined) return '—'; return Number(n).toLocaleString('en-US', { maximumFractionDigits: 2 }); } const MAX_DEGREE = 320; function fmtPercent(n) { if (n === null || n === undefined) return '—'; const pct = (Number(n) / MAX_DEGREE) * 100; return pct.toLocaleString('en-US', { maximumFractionDigits: 2 }) + '%'; } async function loadStats() { try { const res = await fetch('/api/stats'); if (!res.ok) throw new Error('stats request failed'); const data = await res.json(); renderStats(data); } catch (err) { els.statGrid.innerHTML = '<div class="stat-cell"><div class="label">خطأ</div><div class="value small">تعذر تحميل الإحصائيات</div></div>'; console.error(err); } } function renderStats(s) { els.loadMeta.textContent = `${s.sourceFile} · ${s.sheetName} · ${new Date().toLocaleString('en-GB')}`; const cells = [ { label: 'إجمالي الطلاب', value: fmtNumber(s.totalRows) }, { label: 'متوسط المجموع', value: s.totalDegree.average !== null ? fmtNumber(Math.round(s.totalDegree.average * 100) / 100) : '—' }, { label: 'أعلى مجموع', value: fmtNumber(s.totalDegree.max) }, { label: 'أدنى مجموع', value: fmtNumber(s.totalDegree.min) }, ]; els.statGrid.innerHTML = cells.map(c => `<div class="stat-cell"><div class="label">${c.label}</div><div class="value">${c.value}</div></div>` ).join(''); if (s.caseDistribution && s.caseDistribution.length > 0) { els.distributionBlock.style.display = ''; const total = s.caseDistribution.reduce((a, b) => a + b.count, 0); els.distBar.innerHTML = s.caseDistribution.map((seg, i) => { const pct = total > 0 ? (seg.count / total) * 100 : 0; const color = CASE_COLORS[i % CASE_COLORS.length]; const showLabel = pct > 8; return `<div class="dist-segment" style="width:${pct}%;background:${color}" title="${seg.label}: ${seg.count} (${pct.toFixed(1)}%)">${showLabel ? pct.toFixed(0) + '%' : ''}</div>`; }).join(''); els.distLegend.innerHTML = s.caseDistribution.map((seg, i) => { const color = CASE_COLORS[i % CASE_COLORS.length]; return `<div class="item"><span class="swatch" style="background:${color}"></span>${seg.label} — ${fmtNumber(seg.count)}</div>`; }).join(''); } } function buildUrl() { const params = new URLSearchParams({ page: state.page, pageSize: state.pageSize, }); if (state.query) { params.set('field', state.field); params.set('q', state.query); return '/api/search?' + params.toString(); } return '/api/rows?' + params.toString(); } async function loadRows() { const seq = ++state.requestSeq; els.tableBody.innerHTML = '<tr><td colspan="5" class="loading-state">جارٍ البحث…</td></tr>'; try { const res = await fetch(buildUrl()); if (!res.ok) throw new Error('search request failed'); const data = await res.json(); if (seq !== state.requestSeq) return; state.total = data.total; state.totalPages = data.totalPages; state.page = data.page; renderRows(data.items); renderPagination(data); } catch (err) { if (seq !== state.requestSeq) return; els.tableBody.innerHTML = '<tr><td colspan="5" class="empty-state">تعذر تحميل البيانات، حاول مرة أخرى</td></tr>'; console.error(err); } } function renderRows(items) { if (!items || items.length === 0) { els.tableBody.innerHTML = ` <tr><td colspan="5"> <div class="empty-state"> <div class="big">لا توجد نتائج تبدأ بهذا النص</div> <div class="small">جرّب كتابة أقل من الحروف، أو تحقق من الحقل المحدد للبحث</div> </div> </td></tr>`; els.resultCount.textContent = ''; return; } els.tableBody.innerHTML = items.map(row => { const cls = passFailClass(row.student_case_desc); const caseLabel = row.student_case_desc === '' ? '—' : row.student_case_desc; const nameLabel = row.arabic_name === '' ? '—' : row.arabic_name; const degreeLabel = row.total_degree === null ? '—' : fmtNumber(row.total_degree); const percentLabel = fmtPercent(row.total_degree); return ` <tr> <td class="seating-no">${row.seating_no}</td> <td>${escapeHtml(nameLabel)}</td> <td class="degree">${degreeLabel}</td> <td class="degree">${percentLabel}</td> <td class="case-desc"><span class="pill ${cls}">${escapeHtml(caseLabel)}</span></td> </tr>`; }).join(''); els.resultCount.textContent = state.query ? `${fmtNumber(state.total)} نتيجة مطابقة` : `${fmtNumber(state.total)} صف`; } function renderPagination(data) { els.pageInfo.textContent = `Page ${data.page} / ${data.totalPages} · ${fmtNumber(data.total)} rows`; els.prevBtn.disabled = data.page <= 1; els.nextBtn.disabled = data.page >= data.totalPages; } function escapeHtml(str) { return String(str) .replace(/&/g, '&amp;') .replace(/</g, '&lt;') .replace(/>/g, '&gt;') .replace(/"/g, '&quot;'); } els.fieldSelect.addEventListener('click', (e) => { const btn = e.target.closest('button[data-field]'); if (!btn) return; els.fieldSelect.querySelectorAll('button').forEach(b => b.classList.remove('active')); btn.classList.add('active'); state.field = btn.dataset.field; state.page = 1; if (state.query) loadRows(); }); els.searchBox.addEventListener('input', (e) => { const value = e.target.value; clearTimeout(state.debounceTimer); state.debounceTimer = setTimeout(() => { state.query = value.trim(); state.page = 1; loadRows(); }, 300); }); els.pageSizeSelect.addEventListener('change', (e) => { state.pageSize = parseInt(e.target.value, 10); state.page = 1; loadRows(); }); els.prevBtn.addEventListener('click', () => { if (state.page > 1) { state.page -= 1; loadRows(); } }); els.nextBtn.addEventListener('click', () => { if (state.page < state.totalPages) { state.page += 1; loadRows(); } }); loadStats(); loadRows(); })();</script>
+</body>
+</html>

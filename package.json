@@ -1,0 +1,14 @@
+{
+  "name": "excel-results-viewer",
+  "version": "1.0.0",
+  "description": "Fast viewer + prefix search + statistics for large (90k+ row) Excel result sheets",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "license": "ISC",
+  "dependencies": {
+    "express": "^5.2.1",
+    "xlsx": "^0.18.5"
+  }
+}
