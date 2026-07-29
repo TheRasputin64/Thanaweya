@@ -9,3 +9,12 @@
 <p align="center">
   <strong>This is Legal Right ?</strong>
 </p>
+
+![Screenshot](2.PNG)
+
+
+<div align="center">
+
+[Results Website](https://thanaweya2026.g-therasputin.workers.dev/) &nbsp;&nbsp; | &nbsp;&nbsp; [Direct](https://thanaweya.freedev.app/)
+
+</div>
