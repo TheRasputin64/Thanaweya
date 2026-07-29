@@ -1,2 +1,11 @@
-# Thanaweya
-نتيجة الثانوية العامة 2026 بالإسم
+# Thanaweya 2026
+
+<p align="center">
+  <strong>نتيجة الثانوية العامة 2026 بالإسم ورقم الجلوس</strong>
+</p>
+
+![Screenshot](1.PNG)
+
+<p align="center">
+  <strong>This is Legal Right ?</strong>
+</p>
